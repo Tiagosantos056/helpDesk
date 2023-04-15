@@ -1,5 +1,6 @@
 package com.tiago.helpDesk.HelpDesk.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tiago.helpDesk.HelpDesk.domain.enums.Perfil;
 
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import java.util.List;
 public class Tecnico extends Pessoa{
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tecnico")
     private List<Chamado> chamados = new ArrayList<>();
 
