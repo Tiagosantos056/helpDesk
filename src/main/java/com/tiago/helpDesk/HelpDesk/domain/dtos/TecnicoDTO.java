@@ -14,6 +14,8 @@ public class TecnicoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
+
     protected Integer id;
     protected String nome;
     protected String cpf;
@@ -25,9 +27,11 @@ public class TecnicoDTO implements Serializable {
 
     public TecnicoDTO(){
         super();
+        addPerfil(Perfil.CLIENTE);
     }
 
     public TecnicoDTO(Tecnico obj) {
+        super();
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.cpf = obj.getCpf();
@@ -35,8 +39,13 @@ public class TecnicoDTO implements Serializable {
         this.senha = obj.getSenha();
         this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
+        addPerfil(Perfil.CLIENTE);
     }
 
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id){ this.id = id; }
     public String getNome() {
         return nome;
     }
